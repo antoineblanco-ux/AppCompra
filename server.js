@@ -381,23 +381,21 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-// --- SUSTITUYE DESDE AQUÍ HASTA EL FINAL ---
+// --- CONFIGURACIÓN DE VITE Y SERVIDOR ---
 const vite = await createViteServer({
   server: { 
     middlewareMode: true,
-    allowedHosts: 'all' // Cambiamos true por 'all' (más permisivo)
+    allowedHosts: 'all' 
   },
   appType: "spa"
 });
 
 app.use(vite.middlewares);
 
-// USAR EL PUERTO DE RENDER (Obligatorio para que funcione en internet)
+// USAR EL PUERTO DE RENDER
 const port = process.env.PORT || 5173;
 
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Servidor funcionando en puerto ${port}`);
-  console.log(`Log de errores en ${LOG_FILE}`);
+  console.log(`🚀 Servidor funcionando en puerto ${port}`);
+  console.log(`📁 Log de errores en ${LOG_FILE}`);
 });
-  console.log(`App disponible en http://localhost:${PORT}`);
-  console.log(`Log de errores en ${LOG_FILE}`);
