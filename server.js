@@ -383,7 +383,8 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 
 const vite = await createViteServer({
   server: { middlewareMode: true },
-  appType: "spa"
+  appType: "spa",
+  allowedHosts: 'all'
 });
 
 app.use(vite.middlewares);
