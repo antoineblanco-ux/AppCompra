@@ -387,6 +387,7 @@ const vite = await createViteServer({
 });
 
 app.use(vite.middlewares);
+const port = process.env.PORT || 5173;
 
 // El '0.0.0.0' es fundamental para que Render pueda "ver" tu app
 app.listen(port, '0.0.0.0', () => {
