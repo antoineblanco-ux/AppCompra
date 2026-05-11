@@ -381,20 +381,23 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
   }
 });
 
+// --- SUSTITUYE DESDE AQUÍ HASTA EL FINAL ---
 const vite = await createViteServer({
-  server: { middlewareMode: true, allowedHosts: true },
+  server: { 
+    middlewareMode: true,
+    allowedHosts: 'all' // Cambiamos true por 'all' (más permisivo)
+  },
   appType: "spa"
-  
 });
 
 app.use(vite.middlewares);
-//const port = process.env.PORT || 5173;
-const port = 5173;
 
-// El '0.0.0.0' es fundamental para que Render pueda "ver" tu app
+// USAR EL PUERTO DE RENDER (Obligatorio para que funcione en internet)
+const port = process.env.PORT || 5173;
+
 app.listen(port, '0.0.0.0', () => {
   console.log(`Servidor funcionando en puerto ${port}`);
+  console.log(`Log de errores en ${LOG_FILE}`);
 });
-
   console.log(`App disponible en http://localhost:${PORT}`);
   console.log(`Log de errores en ${LOG_FILE}`);
