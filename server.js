@@ -395,4 +395,3 @@ app.listen(port, '0.0.0.0', () => {
 
   console.log(`App disponible en http://localhost:${PORT}`);
   console.log(`Log de errores en ${LOG_FILE}`);
-});
