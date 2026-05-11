@@ -388,11 +388,10 @@ const vite = await createViteServer({
 
 app.use(vite.middlewares);
 
-app.listen(PORT, "0.0.0.0", async () => {
-  await log("info", "Servidor iniciado", {
-    url: `http://localhost:${PORT}`,
-    port: PORT
-  });
+// El '0.0.0.0' es fundamental para que Render pueda "ver" tu app
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Servidor funcionando en puerto ${port}`);
+});
 
   console.log(`App disponible en http://localhost:${PORT}`);
   console.log(`Log de errores en ${LOG_FILE}`);
