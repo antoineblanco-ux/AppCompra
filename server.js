@@ -383,9 +383,10 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 
 // --- CONFIGURACIÓN DE VITE Y SERVIDOR ---
 const vite = await createViteServer({
+  configFile: false, // Obligamos a Vite a usar SOLO esta configuración
   server: { 
     middlewareMode: true,
-    allowedHosts: 'all' 
+    allowedHosts: 'all' // Esto elimina el bloqueo en Render y móviles
   },
   appType: "spa"
 });
